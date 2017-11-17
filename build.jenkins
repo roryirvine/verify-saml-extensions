@@ -1,9 +1,9 @@
 node() {
   checkout scm
+  def build = docker.build 'verify-saml-extensions'
 
-  def container = docker.build 'verify-saml-extensions'
-
-  container.inside {
-    sh './gradlew build'
+  def container = docker.image 'verify-saml-extensions'
+  container.build()
+  container.withRun {
   }
 }
