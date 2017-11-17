@@ -1,9 +1,13 @@
 node() {
-  checkout scm
-  def build = docker.build 'verify-saml-extensions'
-
-  def container = docker.image 'verify-saml-extensions'
-  container.build()
-  container.withRun {
+  stage("Checkout") {
+    checkout scm
+  }
+  stage("Build Container") {
+    def container = docker.image 'verify-saml-extensions'
+    container.build()
+  }
+  stage("Run Container") {
+    container = docker.image 'verify-saml-extensions'
+    container.Run()
   }
 }
