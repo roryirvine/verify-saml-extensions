@@ -1,6 +1,5 @@
-node(linux) {
+node() {
   checkout scm
-
 
   def container = docker.build 'verify-saml-extensions'
 
