@@ -1,4 +1,5 @@
-node() {
+pipeline {
+  stages {
   stage("Checkout") {
     checkout scm
   }
@@ -8,4 +9,5 @@ node() {
   stage("Run Container") {
     def container = docker.image('verify-saml-extensions').run()
   }
+}
 }
